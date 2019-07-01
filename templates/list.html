@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Posts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"
+      integrity="sha256-13EKEXRsynh3cmmNF1dlW6uvoC1SZVaW94bIHZQJoMU="
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
+      integrity="sha256-6DDZX77BrYnAmK9a3N3tvNPtyTIk1q1w9iW+UBtot3Y="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+    <div class="container">
+        <table class="striped responsive-table">
+            <thead>
+                <th>Id</th>
+                <th>IP Address</th>
+                <th>Confession</th>
+                <th>Relief</th>
+            </thead>
+            {% if posts != None %}
+                {% for post in posts %}
+                    <tr>
+                        <td>{{post.id}}</td>
+                        <td>{{post.user}}</td>
+                        <td>{{post.post}}</td>
+                        <td>{{post.relief}}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+        {% if posts != None %}
+        
+            <button id="logoutbtn" class="waves-effect btn red white-text">Log Out</button>
+            <script>
+                $("#logoutbtn").click(() => {
+                    $.ajax('/rest/login', {
+                        method: 'DELETE'
+                    });
+                    window.location.href = '/';
+                });
+            </script>
+        
+        {% endif %}
+
+        {% if posts == None %}
+            <script>
+            
+                $(document).ready(() => {
+                    let pin = prompt("Enter your admin pin");
+                    $.post("/rest/login", {pin: pin}, (response, status) => {
+                        console.log("Admin Login Attempted");
+                        window.location.href = "/rest/query";
+                    });
+
+                });     
+            
+            
+            
+            
+            
+            
+            
+            </script>
+        
+        
+        
+        
+        {% endif %}
+    </div>
+</body>
+</html>

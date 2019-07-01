@@ -1,0 +1,76 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    min-height: 70vh;
+}
+
+#root{
+    height: 100vh;
+}
+
+#confession{
+    min-height: 30vh;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.switch span{
+    font-size: 1rem;
+    color: black;
+}
+
+#first, #second, #third, #fourth{
+    margin-top: 0;
+    margin-bottom: 0;
+    background-repeat: no-repeat;
+    background-size: 50% 100%;
+}
+#first > .col, #second > .col, #third > .col, #fourth > .col{
+    margin: 0;
+    border-width: 0;
+}
+
+#second{
+    background-color: red;
+}
+
+#second a{
+    color: yellow;
+}
+
+#third{
+    background-color: #20053f;
+    color: yellow;
+}
+
+#third small{
+    color: red;
+}
+
+
+@media only screen and (min-width: 605px){
+    #first{
+        background-image: linear-gradient(to right, rgba(255,255,255,0) 20%,
+              rgba(255,255,255,1)), url('first.jpg');
+
+    }
+
+    #second{
+        background-image: url('second.jpg');
+        background-position-x: 100%;
+    }
+
+    #third{
+        background-image: url('third.jpg');
+    }
+
+    #fourth{
+        background-image: url('fourth.jpg');
+        background-position-x: 100%;
+    }
+}

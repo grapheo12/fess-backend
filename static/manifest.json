@@ -1,0 +1,15 @@
+{
+  "short_name": "Fess",
+  "name": "Fess: The platform to confide on",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#00ff00"
+}
