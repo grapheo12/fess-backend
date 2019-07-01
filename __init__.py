@@ -1,10 +1,10 @@
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from blueprints import rest
-
+from secrets_keys import secret_key, db_url
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:Shar_mistha1@localhost/fess'
-app.config['SECRET_KEY'] = 'atrociousLord123'
+app.config['SQLALCHEMY_DATABASE_URI'] = db_url
+app.config['SECRET_KEY'] = secret_key
 
 db = SQLAlchemy(app=app)
 app.register_blueprint(rest, url_prefix='/rest')

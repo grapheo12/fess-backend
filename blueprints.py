@@ -1,6 +1,7 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for, make_response
 from flask_restplus import Api, Resource
-
+from secrets_keys import admin_pin
+ 
 rest = Blueprint('rest', __name__)
 api = Api(rest, doc='/swagger')
 
@@ -19,7 +20,7 @@ class Query(Resource):
         return "Query Done"
 
     def get(self):
-        if 'admin_login' in session and session['admin_login'] == 'Shar_mistha1':
+        if 'admin_login' in session and session['admin_login'] == admin_pin:
             from models import Post
             resp = make_response(render_template("list.html", posts=Post.query.all()))
             resp.headers["Content-type"] = "text/html"
@@ -34,7 +35,7 @@ class Admin(Resource):
     def post(self):
         pin = request.form["pin"]
         if pin == "Shar_mistha1":
-            session['admin_login'] = pin
+            session['admin_login'] = admin_pin
         return "Done"
 
     def delete(self):
