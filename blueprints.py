@@ -34,7 +34,7 @@ class Query(Resource):
 class Admin(Resource):
     def post(self):
         pin = request.form["pin"]
-        if pin == "Shar_mistha1":
+        if pin == admin_pin:
             session['admin_login'] = admin_pin
         return "Done"
 
